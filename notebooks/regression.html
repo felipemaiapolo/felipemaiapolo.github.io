@@ -13230,7 +13230,7 @@ Y=b+w_{1}X_{1}+w_{2}X_{2}+...+w_{k}X_{k}+\epsilon
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Um(a) cientista de dados quer saber agora qual a função linear da forma $\hat{y}=\hat{w}x$ que melhor descreve essa relação - veja que assumimos $b=0$ para simplificar. No entanto, a constante $\hat{w}$ é desconhecida. Para isso, o(a) especialista em análise de dados propõe o método dos Mínimos Quadrados para a estimação do parâmetro $\hat{w}$. Nossa amostra é composta pelos pares ${(20,50), (22,65),...,(35,130)}$, sendo que temos 7 pontos (pares) no total. Logo, nossa amostra pode ser reescrita da seguinte maneira $(x_0,y_0),(x_1,y_1),...,(x_6,y_6)$. O método dos Mínimos Quadrados consiste-se em encontrar o valor de $w$ que minimiza o Erro Quadrático Médio (EQM)calculado com nossos dados. No nosso caso, o EQM é uma função de $w$ e é dado pela equação:</p>
+<p>Um(a) cientista de dados quer saber agora qual a função linear da forma $\hat{y}=wx + \epsilon$ que melhor descreve essa relação - veja que assumimos $b=0$ para simplificar. No entanto, a constante $w$ é desconhecida. Para isso, o(a) especialista em análise de dados propõe o método dos Mínimos Quadrados para a estimação do parâmetro $w$. Nossa amostra é composta pelos pares ${(20,50), (22,65),...,(35,130)}$, sendo que temos 7 pontos (pares) no total. Logo, nossa amostra pode ser reescrita da seguinte maneira $(x_0,y_0),(x_1,y_1),...,(x_6,y_6)$. O método dos Mínimos Quadrados consiste-se em encontrar o valor de $w$ que minimiza o Erro Quadrático Médio (EQM)calculado com nossos dados. No nosso caso, o EQM é uma função de $w$ e é dado pela equação:</p>
 \begin{equation}
        \text{EQM}(w)=\frac{1}{7}\big [(y_0-\hat{y_0})^2+...+(y_6-\hat{y_6})^2 \big ]=\frac{1}{7}\big [(y_0-wx_0)^2+...+(y_6-wx_6)^2\big ]=\frac{1}{7}\sum_{i=0}^{6}(y_i-wx_i)^2
 \end{equation}<p>Perceba que o EQM é uma função quadrática simples neste caso, ou seja, uma parábola. Vamos desenhá-la:</p>
@@ -13587,7 +13587,7 @@ R^2=\frac{Var(\hat{\mathbf{y}})}{Var(\mathbf{y})}=\frac{Var(\hat{y_1},\hat{y_2},
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Quando estamos interessados no impacto de uma variável independente $x$ contínua sobre a média de $y$, podemos também interpretar o coeficiente estimado associado a $x$, utilizando a ideia de derivada do cálculo. Se a nossa equação de interesse é:</p>
 \begin{equation}
-  \hat{y}=b+\hat{w_1}x 
+  \hat{y}=\hat{b}+\hat{w_1}x 
 \end{equation}<p>A interpretação de $\hat{w_1}$ seria então a derivada:</p>
 \begin{equation}
   \hat{w_1}=\frac{\mathrm{d} \hat{y}}{\mathrm{d} x} 
@@ -14466,7 +14466,7 @@ R^2=\frac{Var(\hat{\mathbf{y}})}{Var(\mathbf{y})}=\frac{Var(\hat{y_1},\hat{y_2},
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Um ponto que foi omitido até o momento é que nem sempre os parâmetros estimados e os p-valores de uma regressão linear são confiáveis. Em primeiro lugar, é importante que a variável associada ao parâmetro de interesse seja não correlacionada com o erro - se isso for verdade, temos que a estimativa é confiável (consistente) para grandes amostras (N grande). Em segundo lugar, se N é grande e os erros (diferença entre preço real e previsto) são não correlacionados entre os imóveis e têm média nula, além de mais algumas condições, é possível testar hipóteses, pois os estimadores dos nossos pesos têm distribuição aproximadamente conhecida (Greene, 2000).</p>
-<p>E se N for pequeno, por exemplo? Se isso ocorrer, é de extrema importância que o erro do modelo de regressão tenha distribuição Normal ou aproximadamente Normal. Se conseguirmos fazer com que nossa variável dependente se aproxime de uma Normal (simétrica, forma de sino etc), será mais provável que nosso erro siga uma distribuição aproximadamente normal. Já vimos que o preço tem uma distribuição assimétrica, o que o impede de ter distribuição que se aproxime da normal, pois esta é simétrica. Uma alternativa que funciona muitas vezes é trabalharmos com o <em>log</em> natural do preço. Vamos então criar essa variável:</p>
+<p>E se N for pequeno, por exemplo? Se isso ocorrer, é de extrema importância que o erro do modelo de regressão tenha distribuição Normal ou aproximadamente Normal. Já vimos que o preço tem uma distribuição assimétrica e com valores muito extremos, o que dificultará que nossa hipóteses sobre o erro sejam verdadeiras. Uma alternativa que funciona muitas vezes é trabalharmos com o <em>log</em> natural da variável dependente, no caso o preço. Isso porque suprimimos grandes variações e assimetrias. Vamos então criar essa variável:</p>
 <p>Fonte: Greene, W. H. (2000). Econometric analysis 4th edition. International edition, New Jersey: Prentice Hall, 201-215.</p>
 
 </div>
@@ -14488,7 +14488,7 @@ R^2=\frac{Var(\hat{\mathbf{y}})}{Var(\mathbf{y})}=\frac{Var(\hat{y_1},\hat{y_2},
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>É possível ver que nos aproximamos de uma distribuição normal:</p>
+<p>É possível ver que 'achatamos' nossa distribuição original:</p>
 
 </div>
 </div>
