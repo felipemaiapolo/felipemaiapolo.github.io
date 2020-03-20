@@ -13776,7 +13776,7 @@ div#notebook {
     <span class="n">model</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
     <span class="n">x</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">infer_vector</span><span class="p">(</span><span class="n">txt</span><span class="p">,</span> <span class="n">steps</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
     
-    <span class="k">if</span> <span class="n">normalize</span><span class="p">:</span> <span class="k">return</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">normalize</span><span class="p">:</span> <span class="k">return</span><span class="p">(</span><span class="n">x</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="nd">@x</span><span class="p">))</span>
     <span class="k">else</span><span class="p">:</span> <span class="k">return</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </pre></div>
 
