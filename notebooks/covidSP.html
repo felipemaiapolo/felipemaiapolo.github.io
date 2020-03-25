@@ -13332,8 +13332,8 @@ div#notebook {
 \end{align}<p>We define $\varepsilon$ as being LogNormal random variable with parameters $0$ and $\sigma^2$, that is $\varepsilon \sim \text{LogNormal}(0,\sigma^2)$. Taking the log in both sides, we get</p>
 \begin{align}\\
     \tilde{f}(t,K,\beta_1, \varepsilon)&amp;=\text{log}[f(t,K,\beta_1, \varepsilon)]\\ \\
-    &amp;=\text{log}(K)+ \beta_1 \cdot t + \varepsilon\\ \\
-    &amp;=\beta_0+ \beta_1 \cdot t + \varepsilon \\ \\
+    &amp;=\text{log}(K)+ \beta_1 \cdot t + \tilde{\varepsilon}\\ \\
+    &amp;=\beta_0+ \beta_1 \cdot t + \tilde{\varepsilon} \\ \\
 \end{align}<p>With $\beta_0=\text{log}(K)$ and $\tilde{\varepsilon}=\text{log}(\varepsilon) \sim N(0,\sigma^2)$. If we define $\tilde{y}=\text{log}(y)$, we are modelling our variable of interest in the following way:</p>
 \begin{align}\\
     \tilde{y}|t,\beta_0,\beta_1,\sigma \sim N\Big(\beta_0+ \beta_1 \cdot t, \sigma^2 \Big)
