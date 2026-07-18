@@ -1,113 +1,381 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-164943443-1"></script>
-	<script>
-  	window.dataLayer = window.dataLayer || [];
-  	function gtag(){dataLayer.push(arguments);}
-  	gtag('js', new Date());
-  	gtag('config', 'UA-164943443-1');
-	</script>
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-164943443-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-164943443-1');
+  </script>
 
-	  
-    <title>Felipe</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
-    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700" rel="stylesheet">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Felipe Maia Polo</title>
+  <meta name="description" content="Felipe Maia Polo — Statistics Ph.D. candidate at the University of Michigan working on AI evaluation, statistics, and machine learning.">
 
-    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="css/animate.css">
-    
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="css/aos.css">
+  <style>
+    :root {
+      --bg: #ffffff;
+      --surface: #ffffff;
+      --text: #323232;
+      --text-muted: #6c757d;
+      --heading: #2b2b2b;
+      --link: #2962ff;
+      --link-hover: #0039cb;
+      --border: #eaeaea;
+      --nav-bg: rgba(255,255,255,0.95);
+      --shadow: 0 1px 4px rgba(0,0,0,0.08);
+    }
+    html[data-theme="dark"] {
+      --bg: #1b1e21;
+      --surface: #23272b;
+      --text: #cfd2d6;
+      --text-muted: #9aa0a6;
+      --heading: #f1f3f4;
+      --link: #6ea8ff;
+      --link-hover: #a9c9ff;
+      --border: #33383d;
+      --nav-bg: rgba(27,30,33,0.95);
+      --shadow: 0 1px 4px rgba(0,0,0,0.4);
+    }
 
-    <link rel="stylesheet" href="css/ionicons.min.css">
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 1.65;
+      color: var(--text);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--link); text-decoration: none; transition: color .15s ease; }
+    a:hover { color: var(--link-hover); }
+    h1, h2, h3 { font-family: 'Montserrat', sans-serif; color: var(--heading); line-height: 1.2; }
 
-    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="css/jquery.timepicker.css">
+    /* ---- Nav ---- */
+    nav.topnav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--nav-bg);
+      backdrop-filter: saturate(180%) blur(8px);
+      border-bottom: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+    .nav-inner {
+      max-width: 1140px; margin: 0 auto; padding: 0 20px;
+      height: 64px; display: flex; align-items: center; justify-content: space-between;
+    }
+    .brand { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1.15rem; color: var(--heading); }
+    .nav-links { display: flex; align-items: center; gap: 26px; }
+    .nav-links a { font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 0.95rem; color: var(--heading); }
+    .nav-links a:hover { color: var(--link); }
+    .nav-right { display: flex; align-items: center; gap: 8px; }
+    .theme-toggle {
+      background: none; border: 1px solid var(--border); border-radius: 8px;
+      cursor: pointer; font-size: 1.1rem; color: var(--heading);
+      width: 40px; height: 40px; line-height: 1; display: flex;
+      align-items: center; justify-content: center; transition: background .15s ease;
+    }
+    .theme-toggle:hover { background: var(--border); }
+    .nav-toggle { display: none; background: none; border: 1px solid var(--border);
+      border-radius: 8px; width: 40px; height: 40px; cursor: pointer; color: var(--heading);
+      align-items: center; justify-content: center; }
 
-    
-    <link rel="stylesheet" href="css/flaticon.css">
-    <link rel="stylesheet" href="css/icomoon.css">
-    <link rel="stylesheet" href="css/style.css">
-  </head>
-  <body>
+    /* ---- Layout ---- */
+    .container { max-width: 1140px; margin: 0 auto; padding: 0 20px; }
+    section { padding: 60px 0; border-bottom: 1px solid var(--border); }
+    section:last-of-type { border-bottom: none; }
+    .section-title { font-size: 2.4rem; font-weight: 600; margin: 0 0 30px; }
 
-	<div id="colorlib-page">
-		<a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
-		<aside id="colorlib-aside" role="complementary" class="js-fullheight text-center">
-			<h1 id="colorlib-logo"><a href="index.html">Felipe Maia Polo</a></h1>
-			<nav id="colorlib-main-menu" role="navigation">
-				<ul>
-					<li class="colorlib-active"><a href="index.html">Home</a></li>
-					<li><a href="notebooks.html" style='color: #383838'>Notebooks</a></li>
-					<li><a href="https://scholar.google.com/citations?user=CJbgmnkAAAAJ&hl=en&oi=ao" style='color: #383838'>Google Scholar</a></li>
-					<li><a href="https://www.researchgate.net/profile/Felipe_Maia_Polo" style='color: #383838'>ResearchGate</a></li>
-					<li><a href="https://www.linkedin.com/in/felipemaiapolo/?locale=en_US" style='color: #383838'>LinkedIn</a></li>
-					<li><a href="https://github.com/felipemaiapolo" style='color: #383838'>GitHub</a></li>
-					<li><a href="https://drive.google.com/open?id=1PnhcMhhRpPqAUNhKwEbIn5a_sWnfhfzC" style='color: #383838'>CV</a></li>
-				</ul>
-			</nav>
-		</aside> <!-- END COLORLIB-ASIDE -->
-		<div id="colorlib-main">
-			<div class="hero-wrap js-fullheight" style="background-image: url(images/bg.jpg);" data-stellar-background-ratio="0.5">
-				<div class="overlay"></div>
-				<div class="js-fullheight d-flex justify-content-center align-items-center">
-					<div class="col-md-8 text text-center">
-						<!-- <div class="img mb-4" style="background-image: url(images/author.jpeg);"></div>-->
-						<div class="desc">
-							<h2 class="subheading" style='color: #202020'>Hello, How are you? I'm</h2> 
-							<h1 class="mb-4" style='color:  #202020'>Felipe</h1>
-							<p class="mb-4" style='color:  black''>I am a fifth-year Statistics Ph.D. student at the University of Michigan (USA), and my advisors are Prof. Yuekai Sun and Prof. Moulinath Banerjee. I am mostly interested generative AI evaluation. You can check the work I have been doing by visiting my Google Scholar page. <br> <br> E-mail: felipemaiapolo [at] gmail [dot] com</p>
-							
+    /* ---- About ---- */
+    .about-grid { display: grid; grid-template-columns: 300px 1fr; gap: 60px; align-items: start; }
+    .sidebar { text-align: center; position: sticky; top: 90px; }
+    .avatar {
+      width: 220px; height: 220px; border-radius: 50%;
+      object-fit: cover; object-position: 50% 38%;
+      margin: 0 auto 22px; display: block;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.12);
+    }
+    .sidebar h1 { font-size: 1.6rem; font-weight: 600; margin: 0 0 4px; }
+    .sidebar .role { color: var(--text-muted); font-size: 0.98rem; margin: 0 0 18px; }
+    .socials { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+    .socials a { color: var(--link); display: inline-flex; }
+    .socials a:hover { color: var(--link-hover); transform: translateY(-2px); }
+    .socials svg { width: 24px; height: 24px; fill: currentColor; transition: transform .15s ease; }
 
-						</div>
-					</div>
-				</div>
-			</div>
-			<section class="ftco-section">
-    	<div class="container">
-    		<div class="row justify-content-center mb-5 pb-2">
-          <div class="col-md-7 heading-section text-center ftco-animate">
-            <h1 class="mb-4">E-mail me:</h1>
-             <p><a href="mailto:" class="btn-custom" style='color: black''>felipemaiapolo [at] gmail [dot] com</a></p>
+    .about-body p { margin: 0 0 20px; }
+    .about-body p:last-child { margin-bottom: 0; }
+
+    .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 44px; }
+    .cols h3 { font-size: 1.5rem; font-weight: 600; margin: 0 0 14px; }
+    .interests { list-style: none; padding: 0; margin: 0; }
+    .interests li { position: relative; padding-left: 20px; margin-bottom: 8px; }
+    .interests li::before { content: "▹"; position: absolute; left: 0; color: var(--link); }
+    .edu-item { display: flex; gap: 12px; margin-bottom: 18px; }
+    .edu-item .cap { color: var(--text-muted); flex-shrink: 0; margin-top: 3px; }
+    .edu-item .deg { font-weight: 500; color: var(--heading); }
+    .edu-item .school { color: var(--text-muted); font-size: 0.92rem; }
+
+    /* ---- News ---- */
+    .news { list-style: none; padding: 0; margin: 0; }
+    .news li { padding: 14px 0; border-bottom: 1px dashed var(--border); }
+    .news li:last-child { border-bottom: none; }
+    .news .date { font-weight: 600; color: var(--heading); }
+
+    /* ---- Publications ---- */
+    .pub { display: flex; gap: 16px; padding: 18px 0; border-bottom: 1px solid var(--border); }
+    .pub:last-child { border-bottom: none; }
+    .pub .year { flex-shrink: 0; width: 54px; font-weight: 700; color: var(--link); font-family: 'Montserrat', sans-serif; }
+    .pub .ptitle { font-weight: 500; color: var(--heading); }
+    .pub .authors { font-size: 0.92rem; color: var(--text-muted); margin-top: 2px; }
+    .pub .venue { font-size: 0.9rem; color: var(--text-muted); font-style: italic; margin-top: 2px; }
+    .pub .me { font-weight: 700; color: var(--text); }
+    .more-link { margin-top: 26px; font-family: 'Montserrat', sans-serif; font-weight: 600; }
+
+    /* ---- Contact ---- */
+    .contact p { margin: 6px 0; }
+    footer { text-align: center; padding: 34px 20px; color: var(--text-muted); font-size: 0.88rem; }
+
+    /* ---- Responsive ---- */
+    @media (max-width: 860px) {
+      body { font-size: 17px; }
+      .about-grid { grid-template-columns: 1fr; gap: 34px; }
+      .sidebar { position: static; }
+      .cols { grid-template-columns: 1fr; gap: 30px; }
+      .section-title { font-size: 2rem; }
+      .nav-links { display: none; position: absolute; top: 64px; left: 0; right: 0;
+        flex-direction: column; align-items: flex-start; gap: 0;
+        background: var(--nav-bg); border-bottom: 1px solid var(--border); padding: 8px 20px; }
+      .nav-links.open { display: flex; }
+      .nav-links a { padding: 10px 0; width: 100%; }
+      .nav-toggle { display: flex; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="topnav">
+    <div class="nav-inner">
+      <span class="brand">Felipe Maia Polo</span>
+      <div class="nav-links" id="navlinks">
+        <a href="#about">Home</a>
+        <a href="#news">News</a>
+        <a href="#publications">Publications</a>
+        <a href="notebooks.html">Notebooks</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="nav-right">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">🌙</button>
+        <button class="nav-toggle" aria-label="Menu" onclick="document.getElementById('navlinks').classList.toggle('open')">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+        <aside class="sidebar">
+          <img class="avatar" src="profile.png" alt="Felipe Maia Polo">
+          <h1>Felipe Maia Polo</h1>
+          <p class="role">Ph.D. Candidate in Statistics<br>University of Michigan</p>
+          <div class="socials">
+            <a href="mailto:felipemaiapolo@gmail.com" aria-label="Email" title="Email">
+              <svg viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5z"/></svg>
+            </a>
+            <a href="https://scholar.google.com/citations?user=CJbgmnkAAAAJ&hl=en" aria-label="Google Scholar" title="Google Scholar">
+              <svg viewBox="0 0 24 24"><path d="M12 3 1 9l11 6 9-4.9V17h2V9zM6 13.2v3.3c0 1.7 2.7 3.5 6 3.5s6-1.8 6-3.5v-3.3l-6 3.3z"/></svg>
+            </a>
+            <a href="https://github.com/felipemaiapolo" aria-label="GitHub" title="GitHub">
+              <svg viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.6 2 12.2c0 4.5 2.9 8.3 6.8 9.6.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.4-3.4-1.4-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.6 2.4 1.1 3 .9.1-.7.4-1.1.6-1.4-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.7 1a9.4 9.4 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.3 4.7-4.6 5 .4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5A10 10 0 0 0 22 12.2C22 6.6 17.5 2 12 2z"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/felipemaiapolo/?locale=en_US" aria-label="LinkedIn" title="LinkedIn">
+              <svg viewBox="0 0 24 24"><path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zM8.3 18.3H5.7V9.8h2.6zM7 8.6a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm11.3 9.7h-2.6v-4.1c0-1-.4-1.7-1.3-1.7-.7 0-1.1.5-1.3 1-.1.2-.1.4-.1.7v4.1h-2.6V9.8h2.6v1.1c.3-.5 1-1.3 2.4-1.3 1.7 0 3 1.1 3 3.5z"/></svg>
+            </a>
+            <a href="https://www.researchgate.net/profile/Felipe_Maia_Polo" aria-label="ResearchGate" title="ResearchGate">
+              <svg viewBox="0 0 24 24"><path d="M19.6 2H4.4A2.4 2.4 0 0 0 2 4.4v15.2A2.4 2.4 0 0 0 4.4 22h15.2a2.4 2.4 0 0 0 2.4-2.4V4.4A2.4 2.4 0 0 0 19.6 2zM9.6 14.8c-.5.6-1.2.9-2.1.9-.9 0-1.6-.3-2.1-.9-.5-.6-.8-1.5-.8-2.6v-.6c0-1.1.3-2 .8-2.6.5-.6 1.2-.9 2.1-.9.8 0 1.4.2 1.9.6.5.4.7 1 .8 1.7H9c-.1-.7-.5-1.1-1.4-1.1-.5 0-.9.2-1.1.6-.2.4-.4 1-.4 1.7v.6c0 .7.1 1.3.4 1.7.3.4.7.6 1.2.6.6 0 1-.1 1.2-.4v-1.2H7.8v-1h1.8v2.6zm7.9.8h-1.3l-1.4-2.4h-1v2.4h-1.2V8.7h2.3c.8 0 1.4.2 1.8.5.4.4.6.9.6 1.5 0 .9-.4 1.5-1.1 1.8l1.3 2.9z"/></svg>
+            </a>
+            <a href="https://drive.google.com/open?id=1PnhcMhhRpPqAUNhKwEbIn5a_sWnfhfzC" aria-label="CV" title="CV (PDF)">
+              <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8zm2 16H8v-2h8zm0-4H8v-2h8zm-3-5V3.5L18.5 9z"/></svg>
+            </a>
+          </div>
+        </aside>
+
+        <div class="about-body">
+          <h2 class="section-title">About</h2>
+          <p>I am a fifth-year Ph.D. candidate in <strong>Statistics</strong> at the <strong>University of Michigan</strong>, advised by Prof. <a href="https://yuekai.me/">Yuekai Sun</a> and Prof. Moulinath Banerjee. My research centers on the <strong>evaluation of generative AI and large language models</strong> — building efficient, reliable, and statistically principled methods to measure what these models can and cannot do.</p>
+          <p>I work at the intersection of statistics and machine learning, with interests spanning efficient LLM evaluation, benchmarking, scaling laws, and transfer learning. My work has appeared at venues including ICML, NeurIPS, ICLR, and AISTATS. You can find the full list of my papers on my <a href="https://scholar.google.com/citations?user=CJbgmnkAAAAJ&hl=en">Google Scholar</a> page.</p>
+          <p>Feel free to reach out at <strong>felipemaiapolo [at] gmail [dot] com</strong>.</p>
+
+          <div class="cols">
+            <div>
+              <h3>Interests</h3>
+              <ul class="interests">
+                <li>Generative AI &amp; LLM Evaluation</li>
+                <li>Statistical Machine Learning</li>
+                <li>Benchmarking &amp; Scaling Laws</li>
+                <li>Transfer Learning &amp; Distribution Shift</li>
+                <li>Uncertainty &amp; Efficient Inference</li>
+              </ul>
+            </div>
+            <div>
+              <h3>Education</h3>
+              <div class="edu-item">
+                <span class="cap">🎓</span>
+                <span><span class="deg">Ph.D. in Statistics</span><br><span class="school">University of Michigan · in progress</span></span>
+              </div>
+              <div class="edu-item">
+                <span class="cap">🎓</span>
+                <span><span class="deg">Research in Statistics &amp; Machine Learning</span><br><span class="school">University of São Paulo, Brazil</span></span>
+              </div>
+            </div>
           </div>
         </div>
-    		
-    		</div>
-    	</div>
-    </section>
-    
-		</div><!-- END COLORLIB-MAIN -->
-	</div><!-- END COLORLIB-PAGE -->
+      </div>
+    </div>
+  </section>
 
-  <!-- loader -->
-  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+  <!-- NEWS -->
+  <section id="news">
+    <div class="container">
+      <h2 class="section-title">News &amp; Events</h2>
+      <ul class="news">
+        <li><span class="date">2026:</span> New work — <em>Rich Insights from Cheap Signals: Efficient Evaluations via Tensor Factorization</em> and <em>Bridging Human and LLM Judgments</em> (NeurIPS 2026).</li>
+        <li><span class="date">2025:</span> <em>Sloth: Scaling Laws for LLM Skills to Predict Multi-Benchmark Performance</em> accepted at NeurIPS.</li>
+        <li><span class="date">2025:</span> <em>A Transfer Learning Framework for Weak-to-Strong Generalization</em> and <em>LiveXiv</em> accepted at ICLR 2025.</li>
+        <li><span class="date">2024:</span> <em>tinyBenchmarks: Evaluating LLMs with Fewer Examples</em> presented at ICML 2024.</li>
+        <li><span class="date">2024:</span> <em>Efficient Multi-Prompt Evaluation of LLMs</em> accepted at NeurIPS 2024.</li>
+      </ul>
+    </div>
+  </section>
 
+  <!-- PUBLICATIONS -->
+  <section id="publications">
+    <div class="container">
+      <h2 class="section-title">Selected Publications</h2>
 
-  <script src="js/jquery.min.js"></script>
-  <script src="js/jquery-migrate-3.0.1.min.js"></script>
-  <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/jquery.easing.1.3.js"></script>
-  <script src="js/jquery.waypoints.min.js"></script>
-  <script src="js/jquery.stellar.min.js"></script>
-  <script src="js/owl.carousel.min.js"></script>
-  <script src="js/jquery.magnific-popup.min.js"></script>
-  <script src="js/aos.js"></script>
-  <script src="js/jquery.animateNumber.min.js"></script>
-  <script src="js/bootstrap-datepicker.js"></script>
-  <script src="js/jquery.timepicker.min.js"></script>
-  <script src="js/scrollax.min.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-  <script src="js/google-map.js"></script>
-  <script src="js/main.js"></script>
-    
-  </body>
+      <div class="pub">
+        <div class="year">2024</div>
+        <div>
+          <div class="ptitle">tinyBenchmarks: Evaluating LLMs with Fewer Examples</div>
+          <div class="authors"><span class="me">F. Maia Polo</span>, L. Weber, L. Choshen, Y. Sun, G. Xu, M. Yurochkin</div>
+          <div class="venue">International Conference on Machine Learning (ICML) 2024</div>
+        </div>
+      </div>
+
+      <div class="pub">
+        <div class="year">2024</div>
+        <div>
+          <div class="ptitle">Efficient Multi-Prompt Evaluation of LLMs</div>
+          <div class="authors"><span class="me">F. Maia Polo</span>, R. Xu, L. Weber, M. Silva, O. Bhardwaj, L. Choshen, et al.</div>
+          <div class="venue">Neural Information Processing Systems (NeurIPS) 2024</div>
+        </div>
+      </div>
+
+      <div class="pub">
+        <div class="year">2024</div>
+        <div>
+          <div class="ptitle">Fusing Models with Complementary Expertise</div>
+          <div class="authors">H. Wang, <span class="me">F. Maia Polo</span>, Y. Sun, S. Kundu, E. Xing, M. Yurochkin</div>
+          <div class="venue">International Conference on Learning Representations (ICLR) 2024</div>
+        </div>
+      </div>
+
+      <div class="pub">
+        <div class="year">2026</div>
+        <div>
+          <div class="ptitle">Sloth: Scaling Laws for LLM Skills to Predict Multi-Benchmark Performance Across Families</div>
+          <div class="authors"><span class="me">F. Maia Polo</span>, S. Somerstep, L. Choshen, Y. Sun, M. Yurochkin</div>
+          <div class="venue">Neural Information Processing Systems (NeurIPS) 2026</div>
+        </div>
+      </div>
+
+      <div class="pub">
+        <div class="year">2025</div>
+        <div>
+          <div class="ptitle">A Transfer Learning Framework for Weak-to-Strong Generalization</div>
+          <div class="authors">S. Somerstep, <span class="me">F. Maia Polo</span>, M. Banerjee, Y. Ritov, M. Yurochkin, Y. Sun</div>
+          <div class="venue">International Conference on Learning Representations (ICLR) 2025</div>
+        </div>
+      </div>
+
+      <div class="pub">
+        <div class="year">2023</div>
+        <div>
+          <div class="ptitle">Conditional Independence Testing under Misspecified Inductive Biases</div>
+          <div class="authors"><span class="me">F. Maia Polo</span>, Y. Sun, M. Banerjee</div>
+          <div class="venue">Neural Information Processing Systems (NeurIPS) 2023</div>
+        </div>
+      </div>
+
+      <div class="pub">
+        <div class="year">2025</div>
+        <div>
+          <div class="ptitle">Microfoundation Inference for Strategic Prediction</div>
+          <div class="authors">D. Bracale, S. Maity, <span class="me">F. Maia Polo</span>, S. Somerstep, M. Banerjee, Y. Sun</div>
+          <div class="venue">Artificial Intelligence and Statistics (AISTATS) 2025</div>
+        </div>
+      </div>
+
+      <div class="pub">
+        <div class="year">2023</div>
+        <div>
+          <div class="ptitle">A Unified Framework for Dataset Shift Diagnostics</div>
+          <div class="authors"><span class="me">F. Maia Polo</span>, R. Izbicki, E. G. Lacerda Jr., J. P. Ibieta-Jimenez, R. Vicente</div>
+          <div class="venue">Information Sciences 2023</div>
+        </div>
+      </div>
+
+      <a class="more-link" href="https://scholar.google.com/citations?user=CJbgmnkAAAAJ&hl=en">See all publications on Google Scholar →</a>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <h2 class="section-title">Contact</h2>
+      <p><strong>Email:</strong> felipemaiapolo [at] gmail [dot] com</p>
+      <p><strong>Department of Statistics</strong>, University of Michigan, Ann Arbor, MI</p>
+    </div>
+  </section>
+
+  <footer>
+    © <span id="year"></span> Felipe Maia Polo · Built with plain HTML &amp; CSS.
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Theme toggle with persistence + system preference
+    var root = document.documentElement;
+    var toggle = document.getElementById('themeToggle');
+    function setTheme(t) {
+      root.setAttribute('data-theme', t);
+      toggle.textContent = t === 'dark' ? '☀️' : '🌙';
+      try { localStorage.setItem('theme', t); } catch (e) {}
+    }
+    var saved = null;
+    try { saved = localStorage.getItem('theme'); } catch (e) {}
+    if (!saved) saved = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    setTheme(saved);
+    toggle.addEventListener('click', function () {
+      setTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+    });
+
+    // Close mobile menu on link click
+    document.querySelectorAll('#navlinks a').forEach(function (a) {
+      a.addEventListener('click', function () { document.getElementById('navlinks').classList.remove('open'); });
+    });
+  </script>
+</body>
 </html>
