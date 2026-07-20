@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-164943443-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-164943443-1');
+  </script>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Hobbies &amp; Side Projects — Felipe Maia Polo</title>
+  <meta name="description" content="Hobbies and side projects by Felipe Maia Polo.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #ffffff;
+      --surface: #ffffff;
+      --text: #323232;
+      --text-muted: #6c757d;
+      --heading: #2b2b2b;
+      --link: #2962ff;
+      --link-hover: #0039cb;
+      --border: #eaeaea;
+      --nav-bg: rgba(255,255,255,0.95);
+      --shadow: 0 1px 4px rgba(0,0,0,0.08);
+    }
+    html[data-theme="dark"] {
+      --bg: #1b1e21;
+      --surface: #23272b;
+      --text: #cfd2d6;
+      --text-muted: #9aa0a6;
+      --heading: #f1f3f4;
+      --link: #6ea8ff;
+      --link-hover: #a9c9ff;
+      --border: #33383d;
+      --nav-bg: rgba(27,30,33,0.95);
+      --shadow: 0 1px 4px rgba(0,0,0,0.4);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 1.65;
+      color: var(--text);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--link); text-decoration: none; transition: color .15s ease; }
+    a:hover { color: var(--link-hover); }
+    h1, h2, h3 { font-family: 'Montserrat', sans-serif; color: var(--heading); line-height: 1.2; }
+
+    /* ---- Nav ---- */
+    nav.topnav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--nav-bg);
+      backdrop-filter: saturate(180%) blur(8px);
+      border-bottom: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+    .nav-inner {
+      max-width: 1140px; margin: 0 auto; padding: 0 20px;
+      height: 64px; display: flex; align-items: center; justify-content: space-between;
+    }
+    .brand { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1.15rem; color: var(--heading); }
+    .nav-links { display: flex; align-items: center; gap: 26px; }
+    .nav-links a { font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 0.95rem; color: var(--heading); }
+    .nav-links a:hover { color: var(--link); }
+    .nav-right { display: flex; align-items: center; gap: 8px; }
+    .theme-toggle {
+      background: none; border: 1px solid var(--border); border-radius: 8px;
+      cursor: pointer; font-size: 1.1rem; color: var(--heading);
+      width: 40px; height: 40px; line-height: 1; display: flex;
+      align-items: center; justify-content: center; transition: background .15s ease;
+    }
+    .theme-toggle:hover { background: var(--border); }
+    .nav-toggle { display: none; background: none; border: 1px solid var(--border);
+      border-radius: 8px; width: 40px; height: 40px; cursor: pointer; color: var(--heading);
+      align-items: center; justify-content: center; }
+
+    /* ---- Layout ---- */
+    .container { max-width: 1140px; margin: 0 auto; padding: 0 20px; }
+    section { padding: 60px 0; }
+    .section-title { font-size: 2.4rem; font-weight: 600; margin: 0 0 12px; }
+    .section-sub { color: var(--text-muted); margin: 0 0 36px; }
+
+    /* ---- Project cards ---- */
+    .project {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+      max-width: 720px;
+      margin-bottom: 28px;
+    }
+    .project h3 { font-size: 1.4rem; font-weight: 600; margin: 0 0 6px; }
+    .project .ptag { color: var(--text-muted); font-size: 0.92rem; font-style: italic; margin: 0 0 14px; }
+    .project p { margin: 0 0 14px; }
+    .project p:last-child { margin-bottom: 0; }
+    .project-link { font-family: 'Montserrat', sans-serif; font-weight: 600; }
+
+    footer { text-align: center; padding: 34px 20px; color: var(--text-muted); font-size: 0.88rem; }
+
+    /* ---- Responsive ---- */
+    @media (max-width: 860px) {
+      body { font-size: 17px; }
+      .section-title { font-size: 2rem; }
+      .nav-links { display: none; position: absolute; top: 64px; left: 0; right: 0;
+        flex-direction: column; align-items: flex-start; gap: 0;
+        background: var(--nav-bg); border-bottom: 1px solid var(--border); padding: 8px 20px; }
+      .nav-links.open { display: flex; }
+      .nav-links a { padding: 10px 0; width: 100%; }
+      .nav-toggle { display: flex; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="topnav">
+    <div class="nav-inner">
+      <span class="brand">Felipe Maia Polo</span>
+      <div class="nav-links" id="navlinks">
+        <a href="index.html">Home</a>
+        <a href="index.html#news">News</a>
+        <a href="index.html#experience">Experience</a>
+        <a href="index.html#publications">Publications</a>
+        <a href="index.html#awards">Awards</a>
+        <a href="index.html#contact">Contact</a>
+        <a href="hobbies.html">Hobbies</a>
+        <a href="https://drive.google.com/open?id=1PnhcMhhRpPqAUNhKwEbIn5a_sWnfhfzC">CV</a>
+      </div>
+      <div class="nav-right">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">🌙</button>
+        <button class="nav-toggle" aria-label="Menu" onclick="document.getElementById('navlinks').classList.toggle('open')">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <section id="hobbies">
+    <div class="container">
+      <h2 class="section-title">Hobbies &amp; Side Projects</h2>
+      <p class="section-sub">Things I build and enjoy outside of research.</p>
+
+      <div class="project">
+        <h3>⛵ Yachtness</h3>
+        <p class="ptag">How yacht rock is your song?</p>
+        <p>A playful machine-learning tool that scores any song from 0 to 100 on how much it sounds like <strong>yacht rock</strong> — the smooth, polished soft rock of roughly 1976–1984. Search a song to get its Yachtness score, see its percentile among nearly 2,000 rated songs, and find out which classic yacht rock artists it most resembles.</p>
+        <p><a class="project-link" href="https://yachtness.org/">Visit yachtness.org →</a></p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © <span id="year"></span> Felipe Maia Polo · Built with plain HTML &amp; CSS.
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Theme toggle with persistence + system preference
+    var root = document.documentElement;
+    var toggle = document.getElementById('themeToggle');
+    function setTheme(t) {
+      root.setAttribute('data-theme', t);
+      toggle.textContent = t === 'dark' ? '☀️' : '🌙';
+      try { localStorage.setItem('theme', t); } catch (e) {}
+    }
+    var saved = null;
+    try { saved = localStorage.getItem('theme'); } catch (e) {}
+    if (!saved) saved = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    setTheme(saved);
+    toggle.addEventListener('click', function () {
+      setTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+    });
+
+    // Close mobile menu on link click
+    document.querySelectorAll('#navlinks a').forEach(function (a) {
+      a.addEventListener('click', function () { document.getElementById('navlinks').classList.remove('open'); });
+    });
+  </script>
+</body>
+</html>
