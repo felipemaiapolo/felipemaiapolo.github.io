@@ -13,7 +13,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Yachtness Score — Felipe Maia Polo</title>
-  <meta name="description" content="How I built Yachtness Score, a free web app that rates any song 0–100 on how yacht rock it sounds.">
+  <meta name="description" content="How I built Yachtness Score, a free web app that rates any song from 0 to 100 on how yacht rock it sounds.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -49,48 +49,49 @@
     <h1 class="post-title">Yachtness Score</h1>
     <p class="post-meta">Published <time datetime="2026-07-22T22:57:00-04:00">July 22, 2026 · 10:57 PM EDT</time> · by Felipe Maia Polo</p>
 
-    <p class="lead">I made a free web app called <a href="https://yachtness.org">Yachtness Score</a> that listens to any song and rates it from 0 to 100 on one very specific question: <em>how much does this sound like yacht rock?</em></p>
+    <p class="lead">I spent the last few weekends building something deeply unserious. It is called <a href="https://yachtness.org">Yachtness Score</a>, and it listens to any song and tells you, on a scale from 0 to 100, how much it sounds like yacht rock.</p>
 
-    <h2>First, what is yacht rock?</h2>
-    <p>Yacht rock is the smooth, studio-polished soft rock of roughly 1976–1984 — think Steely Dan, Michael McDonald, and Christopher Cross. Warm Rhodes pianos, immaculate session-musician playing, jazzy chords, and not a rough edge in sight. The name is a joke about the kind of breezy, expensive-sounding music you might play on a boat, and it has since become a genuine fan obsession.</p>
-    <p>The definitive authority is the podcast <a href="https://www.yachtornyacht.com/">Yacht or Nyacht?</a>, whose hosts rate songs on a 0–100 scale and draw the line at 50: above it is Yacht Rock, below it is "Nyacht." Their ratings are lovingly argued and gloriously subjective — which makes them perfect training data.</p>
+    <h2>Wait, what is yacht rock?</h2>
+    <p>Yacht rock is the smooth, studio-polished soft rock made roughly between 1976 and 1984. Think Steely Dan, Michael McDonald, Christopher Cross. Warm Rhodes pianos, expensive session musicians, jazzy chords, and not a single rough edge anywhere. The name started as a joke about the kind of music rich people presumably play on boats, and then the joke became a genre, and now the genre has scholars.</p>
+    <p>The main scholars are the hosts of the podcast <a href="https://www.yachtornyacht.com/">Yacht or Nyacht?</a>, who rate songs on a 0 to 100 scale and draw a hard line at 50. Above the line, yacht. Below it, "nyacht." Their ratings are argued over at length and gloriously subjective, which is exactly what makes them fun training data.</p>
 
     <h2>The idea</h2>
-    <p>The hosts have rated thousands of songs by ear. Could a model learn to hear what they hear? Yachtness Score is my attempt: search for any song and it returns a calibrated probability, dressed up as a 0–100 score with a verdict running from <strong>LANDLOCKED</strong> to <strong>MAXIMUM YACHT</strong> — and a hand-written one-liner for every single score. "Take On Me" scores 3: <em>"If smoothness were water this would be a desert. Nyacht."</em></p>
+    <p>The hosts have rated thousands of songs by ear. I wanted to know if a model could learn to hear whatever it is they hear. So I trained one on their ratings, and now you can search any song and get back a calibrated probability dressed up as a score, with verdicts running from LANDLOCKED to MAXIMUM YACHT. I also wrote a one-liner for every single score from 0 to 100, because if you are going to build something silly you should commit. "Take On Me" scores a 3: <em>"If smoothness were water this would be a desert. Nyacht."</em></p>
 
     <figure>
       <img src="images/blog/score_card.png" alt="Yachtness score card for the Doobie Brothers' 'What a Fool Believes', showing a gauge reading 76 out of 100 and the verdict 'SMOOTH SAILING'.">
-      <figcaption>The Doobie Brothers' "What a Fool Believes" scores 76 — "Smooth Sailing." Songs the podcast already rated return their cross-validated score.</figcaption>
+      <figcaption>"What a Fool Believes" scores 76, verdict Smooth Sailing. Songs the podcast already rated return their cross-validated score, never an in-sample fit.</figcaption>
     </figure>
 
     <h2>How it works</h2>
-    <p>The pipeline is deliberately simple, and every number below comes from the app's own <a href="https://yachtness.org/method">method page</a>:</p>
+    <p>The pipeline is short, and every number here comes from the site's own <a href="https://yachtness.org/method">method page</a>:</p>
     <ul>
-      <li><strong>Ground truth:</strong> ~1,900 songs rated by the Yacht or Nyacht? hosts, treating each song's average host score as the label.</li>
-      <li><strong>Audio:</strong> a 30-second preview from Deezer, matched only when artist and title agree.</li>
-      <li><strong>Features:</strong> the clip goes through <a href="https://huggingface.co/m-a-p/MERT-v1-95M">MERT-v1-95M</a>, a music foundation model. All 13 of its transformer layers are mean-pooled over time, giving a 9,984-dimensional description of how the recording <em>sounds</em>.</li>
-      <li><strong>Classifier:</strong> an ensemble of 5 L2-regularised logistic regressions — one per cross-validation fold — whose calibrated probabilities are averaged into the final P(yacht).</li>
+      <li><strong>Ground truth.</strong> About 1,900 songs rated by the Yacht or Nyacht? hosts, using each song's average host score as the label.</li>
+      <li><strong>Audio.</strong> A 30-second preview from Deezer, matched only when artist and title both agree. Fuzzy matches get thrown away rather than risked.</li>
+      <li><strong>Features.</strong> The clip goes through <a href="https://huggingface.co/m-a-p/MERT-v1-95M">MERT-v1-95M</a>, a music foundation model. I mean-pool all 13 of its transformer layers over time, which gives 9,984 numbers describing how the recording sounds.</li>
+      <li><strong>Classifier.</strong> Five L2-regularised logistic regressions, one per cross-validation fold, whose probabilities get averaged into the final P(yacht).</li>
     </ul>
-    <p>That's it: a strong audio encoder, a boring linear model on top, and honest cross-validation so a song is never scored by a model that trained on it.</p>
+    <p>So it is a big audio encoder with a deliberately boring linear model on top, plus honest nested cross-validation so no song is ever scored by a model that saw it during training. As a statistician I feel contractually obligated to mention that last part.</p>
 
-    <h2>Does it actually work?</h2>
-    <p>Reasonably well, for such a fuzzy target. On held-out songs it gets the Yacht/Nyacht call right about <strong>70%</strong> of the time (versus 51% for always guessing the majority class), ranks a random yacht song above a random non-yacht song <strong>77%</strong> of the time (ROC AUC 0.766), and its probability tracks the hosts' full 0–100 scores at a Pearson correlation of <strong>0.55</strong> — even though it was only trained on a yes/no label. It recovers more than it was asked to.</p>
+    <h2>Does it work?</h2>
+    <p>Better than I expected for such a fuzzy target. On held-out songs it gets the yacht/nyacht call right about 70% of the time, where always guessing the majority class would get you 51%. The ROC AUC is 0.766, meaning it ranks a random yacht song above a random nyacht song 77% of the time. And here is my favorite part: the model was trained only on a yes/no label, but its probability still correlates with the hosts' full 0 to 100 scores at r = 0.55. It recovers more than it was asked to learn.</p>
+    <p>The probabilities are also honestly calibrated. Of the songs the model calls 30%, close to 30% really are yacht. So the number on the dial reads as genuine confidence, not just a ranking.</p>
 
     <figure>
       <img src="images/blog/method_metrics.png" alt="Metrics table from the method page: ROC AUC 0.766, accuracy 0.70, reliability 0.0015, and Pearson r of 0.55 against the hosts' 0-100 scores.">
       <figcaption>The headline numbers, all measured on songs held out of training.</figcaption>
     </figure>
 
-    <h2>What it gets right — and wrong</h2>
-    <p>It is confident and correct at the <em>extremes</em>. Genuine yacht rock lands high; aggressive, lo-fi, or acoustic music lands low. The trouble is the middle of the scale, where a score near 50 is close to a coin flip — exactly the songs the hosts themselves argue about.</p>
-    <p>Its most charming failure is that it <strong>over-rates polished non-yacht music</strong>. Japanese city pop, slick modern R&amp;B, and immaculately produced boogie can all fool it, because it hears the <em>production</em> — the Rhodes, the reverb, the session-grade smoothness — rather than the genre or the era. It judges sound, not category.</p>
+    <h2>Where it fails</h2>
+    <p>It is confident and correct at the extremes. Real yacht rock lands high, and aggressive or lo-fi or acoustic music lands low. The middle is another story. A score near 50 is close to a coin flip, and fittingly, the songs that land there tend to be the same ones the hosts argue about on the show.</p>
+    <p>Its most charming failure is that it over-rates polished music that is not yacht. Japanese city pop fools it. Slick modern R&amp;B fools it. Anything with a Rhodes, tasteful reverb, and session-grade playing can sneak aboard, because the model hears production, not genre and not era. It judges the sound, and nothing else.</p>
 
     <div class="note">
-      <strong>It's a rough detector, not a verdict.</strong> A high score means "this sounds like the stuff the hosts like," not "this <em>is</em> yacht rock." When in doubt, trust the podcast, not the robot.
+      <strong>It is a rough detector, not a verdict.</strong> A high score means "this sounds like the stuff the hosts like," not "this is yacht rock." When the robot and the podcast disagree, trust the podcast.
     </div>
 
     <h2>Try it</h2>
-    <p>Search a song you love and see where it lands. It's free, a little silly, and — I hope — occasionally insightful. Ratings belong to the Yacht or Nyacht? hosts; the site is an unaffiliated hobby project.</p>
+    <p>Search a song you love and see where it lands. There are also <a href="https://yachtness.org/leaderboard">leaderboards</a> with the 50 yachtiest and 50 driest songs the model has ever rated. It is free, a little silly, and occasionally insightful.</p>
     <p><a class="cta" href="https://yachtness.org">Score a song at yachtness.org →</a></p>
 
     <p class="disclaimer">Yachtness Score is an unaffiliated hobby project. The underlying song ratings belong to the hosts of <a href="https://www.yachtornyacht.com/">Yacht or Nyacht?</a>.</p>
