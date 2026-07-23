@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-164943443-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-164943443-1');
+  </script>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>The Brazilian Yacht Rock Leaderboard — Felipe Maia Polo</title>
+  <meta name="description" content="An AI imagined a Brazilian Yacht Rock playlist; my model scored all 1,028 songs. Here is what won, and what the data shows.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/blog.css">
+</head>
+<body>
+
+  <nav class="topnav">
+    <div class="nav-inner">
+      <span class="brand"><a href="index.html" style="color:var(--heading)">Felipe Maia Polo</a></span>
+      <div class="nav-links" id="navlinks">
+        <a href="index.html">Home</a>
+        <a href="index.html#news">News</a>
+        <a href="index.html#experience">Experience</a>
+        <a href="index.html#publications">Publications</a>
+        <a href="index.html#awards">Awards</a>
+        <a href="blog.html">Blog</a>
+        <a href="hobbies.html">Hobbies</a>
+        <a href="https://drive.google.com/open?id=1PnhcMhhRpPqAUNhKwEbIn5a_sWnfhfzC">CV</a>
+      </div>
+      <div class="nav-right">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">🌙</button>
+        <button class="nav-toggle" aria-label="Menu" onclick="document.getElementById('navlinks').classList.toggle('open')">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <article class="post">
+    <a class="back" href="blog.html">← All posts</a>
+    <h1 class="post-title">The Brazilian Yacht Rock Leaderboard</h1>
+    <p class="post-meta">Published <time datetime="2026-07-22T22:58:00-04:00">July 22, 2026 · 10:58 PM EDT</time> · by Felipe Maia Polo</p>
+
+    <p class="lead">Brazil spent the late '70s and '80s perfecting its own strain of smooth — boogie, MPB, and jazz-funk built on the same Rhodes pianos, session players, and immaculate production as the yacht rock canon. So I asked a question: if there were a playlist called <em>Brazilian Yacht Rock</em>, what would be on it — and how yachty is it, really?</p>
+
+    <h2>The experiment</h2>
+    <p>The setup was a small collaboration between two very different kinds of model. First I asked a large language model to imagine a 1,000-song "Brazilian Yacht Rock" playlist. It returned a candidate list of <strong>1,177 songs</strong>, each tagged with its own genre label ("Core Boogie", "Smooth MPB", "Soul Suave", and so on).</p>
+    <p>Then I matched those candidates against Deezer's catalogue with strict artist-and-title verification — fuzzy matches discarded rather than risked — which left <strong>1,028 songs (87%)</strong> with a real 30-second preview. Every one of them went through the <a href="blog-yachtness-score.html">exact same model</a> that powers Yachtness Score. The top 50 are now live on the <a href="https://yachtness.org/leaderboard">leaderboard</a>.</p>
+    <p>The angle, in one line: <strong>the AI curated the candidates, but the model was the judge.</strong></p>
+
+    <figure>
+      <img src="images/blog/brazilian_leaderboard.png" alt="The Brazilian Yacht Rock leaderboard, showing Carlos Bivar's 'Maré' and Djavan's 'Miragem' tied at the top with a score of 88.">
+      <figcaption>The top of the board. Carlos Bivar's "Maré" and Djavan's "Miragem" tie for first at 88.</figcaption>
+    </figure>
+
+    <h2>Who won</h2>
+    <p>The two yachtiest songs are <strong>Carlos Bivar — "Maré" (88)</strong> and <strong>Djavan — "Miragem" (88)</strong>. And then there's Djavan again. And again. He takes <strong>four of the top six</strong> spots (Miragem, Infinito, Topázio, Lilás) — which makes a decent case for Djavan as Brazil's Michael McDonald. <strong>Ed Motta</strong> and <strong>Marcos Valle</strong> feature heavily just below.</p>
+    <p>One entry is special: Marcos Valle's <strong>"Estrelar" (77)</strong> is one of only five songs on the board the Yacht or Nyacht? hosts have <em>actually</em> rated — and it was also the AI's number-one pick. The model, the humans, and the language model all liked it. Consensus is rare here.</p>
+
+    <h2>Most nominees aren't yacht — and that's fine</h2>
+    <p>Here's the first honest finding. The AI was asked for songs that <em>could</em> belong on a Brazilian yacht rock playlist, and it cast a wide net. The model, listening to the actual audio, was far stricter: the median score is just <strong>18</strong>, about <strong>57%</strong> of songs score 20 or below, and under <strong>2%</strong> clear 70. This isn't a playlist of yacht rock; it's a pile of candidates with a thin, genuinely smooth top layer.</p>
+
+    <figure>
+      <img src="images/blog/hist.png" alt="Histogram of yachtness scores for the 1,028 Brazilian songs, heavily concentrated below 25 with a long thin tail toward 100.">
+      <figcaption>Distribution of scores across all 1,028 songs. Most sit low; the yacht is in the tail.</figcaption>
+    </figure>
+
+    <h2>Does the AI's taxonomy match the model's ears?</h2>
+    <p>Surprisingly often, yes. When you group songs by the genre label the language model assigned and look at what the audio model thought, the ordering is intuitive: <strong>"Core Boogie" sits highest</strong> (median 35), smooth and jazz-funk categories cluster in the middle, and acoustic or aggressive buckets — <strong>Rap/Funk, Tropicália, Honorary Bossa</strong> — sink to the bottom. The two models never spoke to each other, yet they broadly agree on which <em>styles</em> sound yachty.</p>
+
+    <figure>
+      <img src="images/blog/by_category.png" alt="Strip plot of yachtness score by the AI's playlist category, with Core Boogie highest and Rap/Funk BR lowest.">
+      <figcaption>Score by the AI's own genre label (black bar = category median). Boogie floats; acoustic sinks.</figcaption>
+    </figure>
+
+    <h2>The interesting part: the AI knew <em>which</em> songs, not which would win</h2>
+    <p>The language model also gave each candidate a rank — its own 1-to-1,177 ordering of how central it was to the idea. If the AI truly had "ears," its ranking should predict the model's scores. It barely does: the correlation between the AI's rank and the audio score is essentially flat (<strong>r ≈ −0.12</strong>).</p>
+    <p>That gap is the whole story. The AI was <em>excellent</em> at nominating plausible songs — its shortlist really is full of smooth Brazilian music — but it had almost no idea which of them would actually sound the yachtiest to a model trained on audio. Curation and judgment turned out to be two different skills.</p>
+
+    <figure>
+      <img src="images/blog/rank_vs_score.png" alt="Scatter of the AI's playlist rank against yachtness score, with a nearly flat trend line and Pearson r of about -0.12.">
+      <figcaption>The AI's ranking vs. the model's score. Almost no relationship — nominating isn't judging.</figcaption>
+    </figure>
+
+    <h2>And a reminder that this measures sound, not quality</h2>
+    <p>Caetano Veloso's "Sampa" — a beloved classic by any measure — scores about <strong>3</strong>. That's not a value judgment; it's acoustic MPB, and acoustic MPB simply isn't yacht rock. The model hears a voice and a guitar where the yacht canon has Rhodes, reverb, and a full session band. A low score means "doesn't sound like the target," never "isn't good." If anything, "Sampa" scoring 3 is the model working exactly as intended.</p>
+
+    <div class="note">
+      Two models, one playlist: a language model that knew Brazilian music well enough to nominate the right songs, and an audio model that judged how they actually sound. Where they agree, you get "Estrelar." Where they don't, you learn something about both.
+    </div>
+
+    <p>Browse the full top 50 — and the yachtiest and driest songs the model has ever heard — on the <a href="https://yachtness.org/leaderboard">Yachtness leaderboard</a>.</p>
+    <p><a class="cta" href="https://yachtness.org/leaderboard">See the Brazilian Yacht Rock board →</a></p>
+
+    <p class="disclaimer">Yachtness Score is an unaffiliated hobby project. Song ratings belong to the hosts of <a href="https://www.yachtornyacht.com/">Yacht or Nyacht?</a>; the candidate list was generated by a language model and matched against Deezer's catalogue.</p>
+  </article>
+
+  <footer>
+    © <span id="year"></span> Felipe Maia Polo · Built with plain HTML &amp; CSS.
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    var root = document.documentElement;
+    var toggle = document.getElementById('themeToggle');
+    function setTheme(t) {
+      root.setAttribute('data-theme', t);
+      toggle.textContent = t === 'dark' ? '☀️' : '🌙';
+      try { localStorage.setItem('theme', t); } catch (e) {}
+    }
+    var saved = null;
+    try { saved = localStorage.getItem('theme'); } catch (e) {}
+    if (!saved) saved = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    setTheme(saved);
+    toggle.addEventListener('click', function () {
+      setTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+    });
+    document.querySelectorAll('#navlinks a').forEach(function (a) {
+      a.addEventListener('click', function () { document.getElementById('navlinks').classList.remove('open'); });
+    });
+  </script>
+</body>
+</html>

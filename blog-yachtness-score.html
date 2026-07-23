@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-164943443-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-164943443-1');
+  </script>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Yachtness Score — Felipe Maia Polo</title>
+  <meta name="description" content="How I built Yachtness Score, a free web app that rates any song 0–100 on how yacht rock it sounds.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/blog.css">
+</head>
+<body>
+
+  <nav class="topnav">
+    <div class="nav-inner">
+      <span class="brand"><a href="index.html" style="color:var(--heading)">Felipe Maia Polo</a></span>
+      <div class="nav-links" id="navlinks">
+        <a href="index.html">Home</a>
+        <a href="index.html#news">News</a>
+        <a href="index.html#experience">Experience</a>
+        <a href="index.html#publications">Publications</a>
+        <a href="index.html#awards">Awards</a>
+        <a href="blog.html">Blog</a>
+        <a href="hobbies.html">Hobbies</a>
+        <a href="https://drive.google.com/open?id=1PnhcMhhRpPqAUNhKwEbIn5a_sWnfhfzC">CV</a>
+      </div>
+      <div class="nav-right">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">🌙</button>
+        <button class="nav-toggle" aria-label="Menu" onclick="document.getElementById('navlinks').classList.toggle('open')">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <article class="post">
+    <a class="back" href="blog.html">← All posts</a>
+    <h1 class="post-title">Yachtness Score</h1>
+    <p class="post-meta">Published <time datetime="2026-07-22T22:57:00-04:00">July 22, 2026 · 10:57 PM EDT</time> · by Felipe Maia Polo</p>
+
+    <p class="lead">I made a free web app called <a href="https://yachtness.org">Yachtness Score</a> that listens to any song and rates it from 0 to 100 on one very specific question: <em>how much does this sound like yacht rock?</em></p>
+
+    <h2>First, what is yacht rock?</h2>
+    <p>Yacht rock is the smooth, studio-polished soft rock of roughly 1976–1984 — think Steely Dan, Michael McDonald, and Christopher Cross. Warm Rhodes pianos, immaculate session-musician playing, jazzy chords, and not a rough edge in sight. The name is a joke about the kind of breezy, expensive-sounding music you might play on a boat, and it has since become a genuine fan obsession.</p>
+    <p>The definitive authority is the podcast <a href="https://www.yachtornyacht.com/">Yacht or Nyacht?</a>, whose hosts rate songs on a 0–100 scale and draw the line at 50: above it is Yacht Rock, below it is "Nyacht." Their ratings are lovingly argued and gloriously subjective — which makes them perfect training data.</p>
+
+    <h2>The idea</h2>
+    <p>The hosts have rated thousands of songs by ear. Could a model learn to hear what they hear? Yachtness Score is my attempt: search for any song and it returns a calibrated probability, dressed up as a 0–100 score with a verdict running from <strong>LANDLOCKED</strong> to <strong>MAXIMUM YACHT</strong> — and a hand-written one-liner for every single score. "Take On Me" scores 3: <em>"If smoothness were water this would be a desert. Nyacht."</em></p>
+
+    <figure>
+      <img src="images/blog/score_card.png" alt="Yachtness score card for the Doobie Brothers' 'What a Fool Believes', showing a gauge reading 76 out of 100 and the verdict 'SMOOTH SAILING'.">
+      <figcaption>The Doobie Brothers' "What a Fool Believes" scores 76 — "Smooth Sailing." Songs the podcast already rated return their cross-validated score.</figcaption>
+    </figure>
+
+    <h2>How it works</h2>
+    <p>The pipeline is deliberately simple, and every number below comes from the app's own <a href="https://yachtness.org/method">method page</a>:</p>
+    <ul>
+      <li><strong>Ground truth:</strong> ~1,900 songs rated by the Yacht or Nyacht? hosts, treating each song's average host score as the label.</li>
+      <li><strong>Audio:</strong> a 30-second preview from Deezer, matched only when artist and title agree.</li>
+      <li><strong>Features:</strong> the clip goes through <a href="https://huggingface.co/m-a-p/MERT-v1-95M">MERT-v1-95M</a>, a music foundation model. All 13 of its transformer layers are mean-pooled over time, giving a 9,984-dimensional description of how the recording <em>sounds</em>.</li>
+      <li><strong>Classifier:</strong> an ensemble of 5 L2-regularised logistic regressions — one per cross-validation fold — whose calibrated probabilities are averaged into the final P(yacht).</li>
+    </ul>
+    <p>That's it: a strong audio encoder, a boring linear model on top, and honest cross-validation so a song is never scored by a model that trained on it.</p>
+
+    <h2>Does it actually work?</h2>
+    <p>Reasonably well, for such a fuzzy target. On held-out songs it gets the Yacht/Nyacht call right about <strong>70%</strong> of the time (versus 51% for always guessing the majority class), ranks a random yacht song above a random non-yacht song <strong>77%</strong> of the time (ROC AUC 0.766), and its probability tracks the hosts' full 0–100 scores at a Pearson correlation of <strong>0.55</strong> — even though it was only trained on a yes/no label. It recovers more than it was asked to.</p>
+
+    <figure>
+      <img src="images/blog/method_metrics.png" alt="Metrics table from the method page: ROC AUC 0.766, accuracy 0.70, reliability 0.0015, and Pearson r of 0.55 against the hosts' 0-100 scores.">
+      <figcaption>The headline numbers, all measured on songs held out of training.</figcaption>
+    </figure>
+
+    <h2>What it gets right — and wrong</h2>
+    <p>It is confident and correct at the <em>extremes</em>. Genuine yacht rock lands high; aggressive, lo-fi, or acoustic music lands low. The trouble is the middle of the scale, where a score near 50 is close to a coin flip — exactly the songs the hosts themselves argue about.</p>
+    <p>Its most charming failure is that it <strong>over-rates polished non-yacht music</strong>. Japanese city pop, slick modern R&amp;B, and immaculately produced boogie can all fool it, because it hears the <em>production</em> — the Rhodes, the reverb, the session-grade smoothness — rather than the genre or the era. It judges sound, not category.</p>
+
+    <div class="note">
+      <strong>It's a rough detector, not a verdict.</strong> A high score means "this sounds like the stuff the hosts like," not "this <em>is</em> yacht rock." When in doubt, trust the podcast, not the robot.
+    </div>
+
+    <h2>Try it</h2>
+    <p>Search a song you love and see where it lands. It's free, a little silly, and — I hope — occasionally insightful. Ratings belong to the Yacht or Nyacht? hosts; the site is an unaffiliated hobby project.</p>
+    <p><a class="cta" href="https://yachtness.org">Score a song at yachtness.org →</a></p>
+
+    <p class="disclaimer">Yachtness Score is an unaffiliated hobby project. The underlying song ratings belong to the hosts of <a href="https://www.yachtornyacht.com/">Yacht or Nyacht?</a>.</p>
+  </article>
+
+  <footer>
+    © <span id="year"></span> Felipe Maia Polo · Built with plain HTML &amp; CSS.
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    var root = document.documentElement;
+    var toggle = document.getElementById('themeToggle');
+    function setTheme(t) {
+      root.setAttribute('data-theme', t);
+      toggle.textContent = t === 'dark' ? '☀️' : '🌙';
+      try { localStorage.setItem('theme', t); } catch (e) {}
+    }
+    var saved = null;
+    try { saved = localStorage.getItem('theme'); } catch (e) {}
+    if (!saved) saved = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    setTheme(saved);
+    toggle.addEventListener('click', function () {
+      setTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+    });
+    document.querySelectorAll('#navlinks a').forEach(function (a) {
+      a.addEventListener('click', function () { document.getElementById('navlinks').classList.remove('open'); });
+    });
+  </script>
+</body>
+</html>
