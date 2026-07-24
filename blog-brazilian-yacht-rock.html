@@ -13,7 +13,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>The Brazilian Yacht Rock Leaderboard — Felipe Maia Polo</title>
-  <meta name="description" content="An AI imagined a Brazilian Yacht Rock playlist; my model scored all 1,028 songs. Here is what won, and what the data shows.">
+  <meta name="description" content="I scored 14,079 songs by 100 AI-suggested Brazilian artists with my yacht rock model. Here is who won, and what the data shows.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -47,55 +47,75 @@
   <article class="post">
     <a class="back" href="blog.html">← All posts</a>
     <h1 class="post-title">The Brazilian Yacht Rock Leaderboard</h1>
-    <p class="post-meta">Published <time datetime="2026-07-22T22:58:00-04:00">July 22, 2026 · 10:58 PM EDT</time> · by Felipe Maia Polo</p>
+    <p class="post-meta">Published <time datetime="2026-07-22T22:58:00-04:00">July 22, 2026</time> · Updated <time datetime="2026-07-24T19:50:00-04:00">July 24, 2026</time> · by Felipe Maia Polo</p>
 
-    <p class="lead">Brazil spent the late '70s and '80s perfecting its own kind of smooth. Boogie, MPB, and jazz-funk records built on the same Rhodes pianos, session players, and immaculate production that the yacht rock canon is made of. As a Brazilian who <a href="blog-yachtness-score.html">built a yacht rock detector</a>, I had to know: how yachty is Brazilian music, really?</p>
+    <p class="lead">Brazil spent the late '70s and '80s perfecting its own kind of smooth. Boogie, MPB, and jazz-funk records built on the same Rhodes pianos, session players, and immaculate production the yacht rock canon is made of. As a Brazilian who <a href="blog-yachtness-score.html">built a yacht rock detector</a>, I had to know: how yachty is Brazilian music, really? So I scored 14,079 songs to find out.</p>
 
     <h2>The experiment</h2>
-    <p>I started with a question to a large language model: if there were a Spotify playlist called Brazilian Yacht Rock, which 1,000 songs would be on it? It came back with 1,177 candidates, each tagged with its own invented genre label. "Core Boogie," "Smooth MPB," "Soul Suave," and so on. Honestly, a pretty good taxonomy.</p>
-    <p>I matched those candidates against Deezer's catalogue with strict artist and title verification, dropping anything fuzzy rather than risking a wrong match. That left 1,028 songs, 87% of the list, each with a real 30-second preview. Then every one of them went through the exact same model that powers Yachtness Score. No special treatment for being Brazilian. The top 50 are now a permanent section on the <a href="https://yachtness.org/leaderboard">leaderboard</a>.</p>
-    <p>So the division of labor was simple: the AI curated the candidates, and the model judged them.</p>
+    <p>I started by asking a large language model a simple question: which 100 Brazilian artists were most likely to have made something that sounds like yacht rock? Then, instead of trusting anyone's picks about individual songs, I pulled everything those artists have on Deezer. Full catalogues, deep cuts, live albums, remixes, everything. That came to 21,418 recordings, which collapse to 14,079 distinct songs once you account for the same song appearing on multiple releases. Each song keeps its best-scoring recording, and its year is the earliest release I could find, so a 1984 song reissued in 2014 counts as 1984.</p>
+    <p>Every preview then went through the exact same model that powers <a href="https://yachtness.org">Yachtness Score</a>. No special treatment for being Brazilian. The top 50 now live on the site's <a href="https://yachtness.org/leaderboard">leaderboard</a>, and the top 100 are in a Spotify playlist at the end of this post.</p>
+    <p>The division of labor matters here: the language model only chose whose catalogues to search. Every judgment about every individual song came from the audio model listening to it.</p>
 
     <figure>
-      <img src="images/blog/brazilian_leaderboard.png" alt="The Brazilian Yacht Rock leaderboard, showing Carlos Bivar's 'Maré' and Djavan's 'Miragem' tied at the top with a score of 88.">
-      <figcaption>The top of the board. Carlos Bivar's "Maré" and Djavan's "Miragem" tie for first at 88.</figcaption>
+      <img src="images/blog/brazilian_leaderboard.png" alt="The Brazilian Yacht Rock section of the leaderboard, with Djavan's 'Transe' first at 91 followed by 'Miragem' at 88.">
+      <figcaption>The top of the board. "Transe" leads at 91, with Djavan holding five of the top thirteen spots.</figcaption>
     </figure>
 
-    <h2>Who won</h2>
-    <p>Two songs tie for first at 88: "Maré" by Carlos Bivar, a gorgeous obscurity, and "Miragem" by Djavan, which is not obscure at all if you grew up in Brazil. And then Djavan just keeps going. He has four of the top six ("Miragem," "Infinito," "Topázio," "Lilás") and eight of the top 50, more than any other artist. I went in expecting him to do well and he still beat my expectations. If yacht rock has a Brazilian Michael McDonald, the data says it is Djavan.</p>
-    <p>Behind him, Ed Motta and Lucas Arruda have four top-50 songs each, and Banda Black Rio has three. Marcos Valle is there too, and his "Estrelar" (77) deserves a special mention that I will get to.</p>
-    <p>Only five songs in the whole set had actually been rated by the Yacht or Nyacht? hosts, so for those five the board shows their cross-validated scores: "Estrelar" at 77, Biafra's "Leão Ferido" at 52, Rita Lee's "Lança Perfume" at 51, Guilherme Arantes's "Deixa Chover" at 41, and Gilberto Gil's "Palco" at 37. Everything else was scored live by the model.</p>
-
-    <h2>Most of the list is not yacht, and that is fine</h2>
-    <p>The AI was asked for songs that could plausibly belong on a Brazilian yacht rock playlist, and it cast a wide net. The model, actually listening to the audio, was much stricter. The median score is 18. More than half the songs (57%) score 20 or below, and only 19 songs out of 1,028 clear 70. This is not a playlist of yacht rock. It is a large pile of candidates with a thin, genuinely smooth layer floating on top.</p>
+    <h2>Djavan won, and it is not close</h2>
+    <p>The new champion is "Transe" at 91, from Djavan's 1984 album <em>Lilás</em>. To put that number in context, 91 does not just win the Brazilian board. It puts "Transe" on the site's global top-50 list, sandwiched between David Roberts and Toto, surrounded by the American canon the model was trained to recognize. A Brazilian song sits comfortably among the yachtiest recordings the model has ever heard.</p>
+    <p>And Djavan does not stop there. He has seven of the top 20: "Transe," "Miragem" (88), "Topázio," "Lei," "Liberdade," "Infinito," and "Iris," almost all from his 1984 to 1986 run. <em>Lilás</em> itself averages 77.6 across its nine tracks, the highest album mean in the entire pool, which makes it a serious candidate for the yachtiest Brazilian album ever recorded. If Brazil has a Michael McDonald, the data keeps insisting it is Djavan.</p>
+    <p>The rest of the top 20 has its own surprises. Luiz Melodia, an artist better known for raw soulful MPB, lands third with "Destino Coração" (87), a 2006 recording. Sandra De Sá's "Filho" (86) and Ivan Lins's "Sonhos (Arrastão Dos Pescadores)" (85) hold up the 1980s end, while Azymuth shows up with a song from 2023. Smooth did not end with the decade.</p>
 
     <figure>
-      <img src="images/blog/hist.png" alt="Histogram of yachtness scores for the 1,028 Brazilian songs, heavily concentrated below 25 with a long thin tail toward 100.">
-      <figcaption>Scores for all 1,028 songs. The median is 18. The yacht is the tail.</figcaption>
+      <img src="images/blog/4_top20_songs.png" alt="Bar chart of the 20 yachtiest Brazilian songs, led by Djavan's 'Transe' at 91 and 'Miragem' at 88.">
+      <figcaption>The 20 yachtiest songs in the pool, using each song's best-scoring recording and earliest release year.</figcaption>
     </figure>
 
-    <h2>The boogie era hump is real</h2>
-    <p>Yacht rock is supposed to be a 1976 to 1984 phenomenon, so I checked whether the model hears an era effect in the Brazilian data too. It does, loudly. Songs released between 1977 and 1987 have a median score of 33. Songs from before 1977 have a median of 8, and everything after the '80s sits in the high teens. The window when Brazilian studios went all in on boogie and polished MPB is exactly the window the model finds smoothest.</p>
-    <p>But here is the twist: the median release year <em>inside the top 50</em> is 2005. That is because artists like Ed Motta and Lucas Arruda kept making, and still make, records with that exact production style, and the model cannot tell 2015 boogie revival from 1982 boogie. The era ended. The sound never did.</p>
-
-    <h2>Does the AI's taxonomy match the model's ears?</h2>
-    <p>More than I expected. If you group the songs by the genre label the language model invented and look at what the audio model thought of each group, the ordering is remarkably sensible. "Core Boogie" has the highest median at 35, the smooth and jazz-funk categories cluster in the middle, and the acoustic and aggressive buckets (Rap/Funk, Tropicália, Honorary Bossa) sink to the bottom with medians under 10. Two models that never exchanged a word, one reading text and one hearing audio, and they broadly agree on which styles are smooth.</p>
-    <p>One nuance: although Core Boogie has the highest median, the category that put the most songs in the top 50 is actually Smooth MPB, with 17. It is a much bigger bucket, so even a lower hit rate produces more hits. Djavan alone does a lot of that work.</p>
+    <h2>Most of Brazil is not on the boat</h2>
+    <p>Now the sobering part. This pool was picked to be as yachty as possible, 100 artists nominated precisely because they might have made something smooth. The model still rejected almost all of it. The median score is 19. Only 1,115 songs out of 14,079, about 7.9%, cross the yacht line at 50, and a mere 189 songs, 1.3%, reach 70 or higher.</p>
+    <p>I find this genuinely informative about the genre. Even inside catalogues chosen for smoothness, actual yacht rock is rare. It is a narrow, specific sound: a particular era of studio practice, a particular kind of chord voicing and mix polish, and most of what even smooth-adjacent artists recorded does not have it.</p>
 
     <figure>
-      <img src="images/blog/by_category.png" alt="Strip plot of yachtness score by the AI's playlist category, with Core Boogie highest and Rap/Funk BR lowest.">
-      <figcaption>Score by the AI's own genre label (black bar = category median). Boogie floats, acoustic sinks.</figcaption>
+      <img src="images/blog/1_score_distribution.png" alt="Histogram of scores for 14,079 songs, heavily right-skewed with median 19 and only 7.9% crossing the yacht line at 50.">
+      <figcaption>Scores for all 14,079 distinct songs. Most of the fleet never leaves the harbor.</figcaption>
+    </figure>
+
+    <h2>Smooth peaked exactly when you think it did</h2>
+    <p>The model never sees a release date. It only hears audio. And yet, when you group songs by year, it independently rediscovers the golden age: scores climb through the late '70s, peak in the 1980 to 1984 bucket at a median of 34, nearly double the all-time median, and slide back down through the '90s. The window when Brazilian studios went all in on boogie and polished MPB production is exactly the window the model finds smoothest.</p>
+    <p>Two smaller things I checked along the way. First, the median never returns to its '80s peak, but it also never collapses; from the 2000s on it sits around 19, kept afloat by revivalists like Ed Motta and by veterans who never stopped recording that way. Second, song length has nothing to do with it: the correlation between duration and score is 0.03, which is to say zero. Smoothness is not length.</p>
+
+    <figure>
+      <img src="images/blog/2_score_by_year.png" alt="Median yachtness score by release year with interquartile band, rising to a peak of 34 in the early 1980s and declining after.">
+      <figcaption>Median score by earliest release year. The model finds the boogie era on its own.</figcaption>
+    </figure>
+
+    <h2>The consistency crown goes somewhere unexpected</h2>
+    <p>Ranking artists by their median song score, among artists with at least 40 scored songs, produces a genuine surprise at the top: Trio Caiowás, a vintage vocal-harmony group, with a median of 44 across 46 songs. Sandra De Sá and Claudio Zoli follow at 40, and Carlos Dafé at 36.</p>
+    <p>Djavan, the artist who owns the top of the song list, has a median of just 29. That is the interesting part. He has the highest peaks in the pool and a deep, varied catalogue of 274 songs that spans way beyond boogie. Peak yachtiness and consistent yachtiness are different crowns, and they belong to different heads. Sandra De Sá comes closest to wearing both: a median of 40 across 149 songs, plus 14 songs in the top 100, more than anyone else.</p>
+    <p>One honest caveat on Trio Caiowás: 46 songs of vintage vocal-harmony material is a very specific diet, and their high median may partly reflect the model being charmed by one production style rather than a catalogue full of yacht. I am flagging it rather than hiding it, because it is exactly the kind of quirk a rough detector produces.</p>
+
+    <figure>
+      <img src="images/blog/3_artist_league.png" alt="Artist league table showing median score and interquartile range for artists with at least 40 songs, led by Trio Caiowás at 44.">
+      <figcaption>The artist league: dot is the median, bar is the middle 50% of each artist's songs.</figcaption>
+    </figure>
+
+    <h2>Who owns the top 100</h2>
+    <p>Zooming out from single songs to the playlist as a whole, three artists supply more than a third of it: Sandra De Sá with 14 songs, and Djavan and Gal Costa with 11 each. Gal Costa is a fun case, because she is not remembered as a boogie artist at all, but a 427-song catalogue recorded across six decades leaves plenty of room for smooth moments, including recent live recordings the model rates highly. After the big three, Ivan Lins contributes five, and the remaining 26 artists share 35 songs among them.</p>
+
+    <figure>
+      <img src="images/blog/5_top100_composition.png" alt="Bar chart of songs per artist in the top-100 playlist: Sandra De Sá 14, Djavan 11, Gal Costa 11, then a long tail of 26 artists with 35 songs.">
+      <figcaption>The top-100 playlist by artist. Three names fill a third of the boat.</figcaption>
     </figure>
 
     <h2>A reminder that this measures sound, not quality</h2>
-    <p>Caetano Veloso's "Sampa" is one of the most beloved songs ever written about a Brazilian city. It scores a 3. That is not the model being wrong. It is acoustic MPB, a voice and a guitar, and the yacht canon is Rhodes, reverb, and a full session band. A low score means "does not sound like the target," never "is not good." If anything, "Sampa" scoring 3 is proof the model is doing its job.</p>
+    <p>The driest artists in the pool are a useful sanity check. Dom Um Romão, the percussion legend, has a median of 8. Victor Biglione's jazz fusion sits at 10. Jorge Ben Jor, one of the most beloved and influential artists Brazil has ever produced, has a median of 12 across 276 songs. None of this is the model calling anyone bad. Percussion-forward fusion and samba-rock guitar simply do not sound like Rhodes-and-reverb studio pop, and the model only ever answers one question: does this sound like the target? A low score means no. It never means "not good."</p>
 
     <div class="note">
-      Two models, one playlist. A language model that knew Brazilian music well enough to nominate the right songs, and an audio model that judged how they actually sound. Where they agree you get "Estrelar." Where they disagree, you learn something about both.
+      Two models, one fleet. A language model picked which harbors to search, and an audio model judged every boat it found. The language model knew where yacht might live. Only the audio model could tell whether it actually did.
     </div>
 
     <h2>Listen for yourself</h2>
-    <p>Numbers are nice, but this is music. I put the winners into a Spotify playlist so you can judge the model with your own ears:</p>
+    <p>Numbers are nice, but this is music. The top 100 songs are in the playlist below, so you can judge the model with your own ears:</p>
 
     <div class="embed-card">
       <iframe data-testid="embed-iframe" src="https://open.spotify.com/embed/playlist/62HCTkQz8WqSJqGUWsxAaU?utm_source=generator&theme=0&si=47a3349db6c345a9" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" title="Brazilian Yacht Rock playlist on Spotify"></iframe>
@@ -111,12 +131,12 @@
   title  = {The Brazilian Yacht Rock Leaderboard},
   year   = {2026},
   month  = {July},
-  doi    = {10.5281/zenodo.21502654},
+  doi    = {10.5281/zenodo.21541867},
   url    = {https://felipemaiapolo.github.io/blog-brazilian-yacht-rock.html}
 }</code></pre>
-    <p>An archived copy of this post lives at <a href="https://doi.org/10.5281/zenodo.21502654">doi.org/10.5281/zenodo.21502654</a>.</p>
+    <p>An archived copy of this post lives at <a href="https://doi.org/10.5281/zenodo.21541867">doi.org/10.5281/zenodo.21541867</a>.</p>
 
-    <p class="disclaimer">Yachtness Score is an unaffiliated hobby project. Song ratings belong to the hosts of <a href="https://www.yachtornyacht.com/">Yacht or Nyacht?</a>; the candidate list was generated by a language model and matched against Deezer's catalogue.</p>
+    <p class="disclaimer">Yachtness Score is an unaffiliated hobby project. Song ratings belong to the hosts of <a href="https://www.yachtornyacht.com/">Yacht or Nyacht?</a>; the artist pool was suggested by a language model, and audio comes from Deezer's 30-second previews.</p>
   </article>
 
   <footer>
