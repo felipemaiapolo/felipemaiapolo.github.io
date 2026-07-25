@@ -47,12 +47,13 @@
   <article class="post">
     <a class="back" href="blog.html">← All posts</a>
     <h1 class="post-title">The Brazilian Yacht Rock Leaderboard</h1>
-    <p class="post-meta">Published <time datetime="2026-07-22T22:58:00-04:00">July 22, 2026</time> · Updated <time datetime="2026-07-24T19:50:00-04:00">July 24, 2026</time> · by Felipe Maia Polo</p>
+    <p class="post-meta">Published <time datetime="2026-07-22T22:58:00-04:00">July 22, 2026</time> · Updated <time datetime="2026-07-25T00:45:00-04:00">July 25, 2026</time> · by Felipe Maia Polo</p>
 
     <p class="lead">Brazil spent the late '70s and '80s perfecting its own kind of smooth. Boogie, MPB, and jazz-funk records built on the same Rhodes pianos, session players, and immaculate production the yacht rock canon is made of. As a Brazilian who <a href="blog-yachtness-score.html">built a yacht rock detector</a>, I had to know: how yachty is Brazilian music, really? So I scored 14,079 songs to find out.</p>
 
     <h2>The experiment</h2>
-    <p>I started by asking a large language model a simple question: which 100 Brazilian artists were most likely to have made something that sounds like yacht rock? Then, instead of trusting anyone's picks about individual songs, I pulled everything those artists have on Deezer. Full catalogues, deep cuts, live albums, remixes, everything. That came to 21,418 recordings, which collapse to 14,079 distinct songs once you account for the same song appearing on multiple releases. Each song keeps its best-scoring recording, and its year is the earliest release I could find, so a 1984 song reissued in 2014 counts as 1984.</p>
+    <p>I started by asking a large language model a simple question: which 100 Brazilian artists were most likely to have made something that sounds like yacht rock? Then, instead of trusting anyone's picks about individual songs, I pulled everything those artists have on Deezer. Full catalogues, deep cuts, live albums, remixes, everything. That came to 21,418 scored recordings, with only 13 tracks skipped for having no preview. The recordings collapse to 14,079 distinct songs by matching on normalized artist and title, ignoring case and punctuation and stripping bracketed suffixes like "(Remastered)" or "(Ao Vivo)". Each song keeps its highest-scoring recording, and its year is the oldest release year seen across every copy of it in the pool, so a 1984 song reissued in 2014 counts as 1984.</p>
+    <p>One honest blind spot in that dating rule: when the only copies of a song in the pool are reissues, the song wears the reissue year. That can only push dates later, never earlier, which will matter when we get to the era analysis.</p>
     <p>Every preview then went through the exact same model that powers <a href="https://yachtness.org">Yachtness Score</a>. No special treatment for being Brazilian. The top 50 now live on the site's <a href="https://yachtness.org/leaderboard">leaderboard</a>, and the top 100 are in a Spotify playlist at the end of this post.</p>
     <p>The division of labor matters here: the language model only chose whose catalogues to search. Every judgment about every individual song came from the audio model listening to it.</p>
 
@@ -64,7 +65,8 @@
     <h2>Djavan won, and it is not close</h2>
     <p>The new champion is "Transe" at 91, from Djavan's 1984 album <em>Lilás</em>. To put that number in context, 91 does not just win the Brazilian board. It puts "Transe" on the site's global top-50 list, sandwiched between David Roberts and Toto, surrounded by the American canon the model was trained to recognize. A Brazilian song sits comfortably among the yachtiest recordings the model has ever heard.</p>
     <p>And Djavan does not stop there. He has seven of the top 20: "Transe," "Miragem" (88), "Topázio," "Lei," "Liberdade," "Infinito," and "Iris," almost all from his 1984 to 1986 run. <em>Lilás</em> itself averages 77.6 across its nine tracks, the highest album mean in the entire pool, which makes it a serious candidate for the yachtiest Brazilian album ever recorded. If Brazil has a Michael McDonald, the data keeps insisting it is Djavan.</p>
-    <p>The rest of the top 20 has its own surprises. Luiz Melodia, an artist better known for raw soulful MPB, lands third with "Destino Coração" (87), a 2006 recording. Sandra De Sá's "Filho" (86) and Ivan Lins's "Sonhos (Arrastão Dos Pescadores)" (85) hold up the 1980s end, while Azymuth shows up with a song from 2023. Smooth did not end with the decade.</p>
+    <p>The rest of the top 20 has its own surprises. Luiz Melodia, an artist better known for raw soulful MPB, lands third with "Destino Coração" (87). It shows 2006 on the board, which is exactly the reissue artifact I flagged above: only later copies of it exist in the pool, so it wears a later year. Sandra De Sá's "Filho" (86) and Ivan Lins's "Sonhos (Arrastão Dos Pescadores)" (85) hold up the 1980s end, while Azymuth shows up with a song from 2023. Smooth did not end with the decade.</p>
+    <p>And then there is the strangest guest on the boat: "Tipo Bailarina" by Same Mc (82), from 2024. It only entered the pool because it features a singer named Cassiano, who got confounded with the Brazilian soul legend Cassiano when the artist catalogues were assembled. A case of mistaken identity all the way down. It also does not matter to the scoreboard: the model never knew who was singing, it just heard the recording and called it smooth. Boarding by accident is still boarding.</p>
 
     <figure>
       <img src="images/blog/4_top20_songs.png" alt="Bar chart of the 20 yachtiest Brazilian songs, led by Djavan's 'Transe' at 91 and 'Miragem' at 88.">
@@ -82,11 +84,12 @@
 
     <h2>Smooth peaked exactly when you think it did</h2>
     <p>The model never sees a release date. It only hears audio. And yet, when you group songs by year, it independently rediscovers the golden age: scores climb through the late '70s, peak in the 1980 to 1984 bucket at a median of 34, nearly double the all-time median, and slide back down through the '90s. The window when Brazilian studios went all in on boogie and polished MPB production is exactly the window the model finds smoothest.</p>
+    <p>Remember the reissue caveat from the methodology: mis-dated songs can only leave the early '80s, never sneak into them. So if anything, the real peak is taller than the chart shows.</p>
     <p>Two smaller things I checked along the way. First, the median never returns to its '80s peak, but it also never collapses; from the 2000s on it sits around 19, kept afloat by revivalists like Ed Motta and by veterans who never stopped recording that way. Second, song length has nothing to do with it: the correlation between duration and score is 0.03, which is to say zero. Smoothness is not length.</p>
 
     <figure>
       <img src="images/blog/2_score_by_year.png" alt="Median yachtness score by release year with interquartile band, rising to a peak of 34 in the early 1980s and declining after.">
-      <figcaption>Median score by earliest release year. The model finds the boogie era on its own.</figcaption>
+      <figcaption>Median score with the 25th to 75th percentile band, by earliest release year. The model finds the boogie era on its own.</figcaption>
     </figure>
 
     <h2>The consistency crown goes somewhere unexpected</h2>
@@ -96,7 +99,7 @@
 
     <figure>
       <img src="images/blog/3_artist_league.png" alt="Artist league table showing median score and interquartile range for artists with at least 40 songs, led by Trio Caiowás at 44.">
-      <figcaption>The artist league: dot is the median, bar is the middle 50% of each artist's songs.</figcaption>
+      <figcaption>The artist league: dot is the median, bar is the 25th to 75th percentile of each artist's songs.</figcaption>
     </figure>
 
     <h2>Who owns the top 100</h2>
